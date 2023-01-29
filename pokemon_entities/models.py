@@ -1,5 +1,4 @@
 from django.db import models  # noqa F401
-from django.utils.timezone import now
 
 class Pokemon(models.Model):
     title = models.CharField("Название (русский)", max_length=200)
