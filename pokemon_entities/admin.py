@@ -7,5 +7,5 @@ class PokemonAdmin(admin.ModelAdmin):
 
 @admin.register(PokemonEntity)
 class PokemonEntityAdmin(admin.ModelAdmin):
-    fields = ['pokemon', 'lat', 'lon']
+    pass
 
