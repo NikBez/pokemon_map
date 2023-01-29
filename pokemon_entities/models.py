@@ -3,6 +3,9 @@ from django.utils.timezone import now
 
 class Pokemon(models.Model):
     title = models.CharField(max_length=200)
+    title_en = models.CharField(max_length=200)
+    title_jp = models.CharField(max_length=200)
+    description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to="pokemons", null=True, blank=True)
 
     def __str__(self):
@@ -10,7 +13,7 @@ class Pokemon(models.Model):
 
 
 class PokemonEntity(models.Model):
-    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
+    pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE, related_name="enteties")
     lat = models.FloatField()
     lon = models.FloatField()
     append_at = models.DateTimeField(blank=True, null=True)
