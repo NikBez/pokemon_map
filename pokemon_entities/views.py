@@ -68,14 +68,23 @@ def show_pokemon(request, pokemon_id):
             pokemon_entity.lon,
             request.build_absolute_uri(pokemon.image.url)
         )
+
+    parent_img = request.build_absolute_uri(pokemon.parent.image.url) if pokemon.parent else None
+    child_img = request.build_absolute_uri(pokemon.child.first().image.url) if pokemon.child.first() else None
+
     pokemon_context = {
         "title_ru":pokemon.title,
         "title_en": pokemon.title_en,
         "title_jp": pokemon.title_jp,
         "description": pokemon.description,
         "image": pokemon.image.url,
+        "previous_evolution": pokemon.parent,
+        "previous_evolution_img": parent_img,
+        "next_evolution": pokemon.child.first(),
+        "next_evolution_img": child_img,
     }
 
+
     return render(request, 'pokemon.html', context={
-        'map': folium_map._repr_html_(), 'pokemon': pokemon_context
+        'map': folium_map._repr_html_(), 'pokemon': pokemon_context,
     })
