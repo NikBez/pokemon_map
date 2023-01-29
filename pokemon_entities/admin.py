@@ -3,5 +3,5 @@ from .models import Pokemon
 
 @admin.register(Pokemon)
 class PokemonAdmin(admin.ModelAdmin):
-    pass
+    fields = ['title', 'image']
 
