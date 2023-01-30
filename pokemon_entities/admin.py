@@ -7,4 +7,4 @@ class PokemonAdmin(admin.ModelAdmin):
 
 @admin.register(PokemonEntity)
 class PokemonEntityAdmin(admin.ModelAdmin):
-    list_display = ['pokemon', 'lat', 'lon', 'append_at', 'disappeared_at', 'level']
+    list_display = ['pokemon', 'lat', 'lon', 'appear_at', 'disappeared_at', 'level']
